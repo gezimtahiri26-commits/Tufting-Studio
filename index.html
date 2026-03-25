@@ -351,7 +351,46 @@
       .products {
         grid-template-columns: 1fr;
       }
+  .hero-title {
+    font-size: 44px;
+    line-height: 1.1;
+  }
 
+  .hero-copy p {
+    font-size: 18px;
+  }
+
+  .topbar {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
+  .menu {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn,
+  .etsy-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-image img,
+  .about-image img,
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
       .section-head {
         flex-direction: column;
         align-items: start;
@@ -359,7 +398,7 @@
 
       .hero-image,
       .about-image {
-        height: 360px;
+        height: auto;
       }
     }
   </style>
