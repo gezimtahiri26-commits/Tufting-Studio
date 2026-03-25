@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tufting Studio </title>
+  <meta name="description" content="Custom handmade tufting rugs and decor. Shop on Etsy." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5e5d1;
+      color: hsl(0, 0%, 1%);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: black;
+      color: white;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: hwb(35 53% 7%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .site-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid hsl(36, 100%, 51%);
+      background: hsl(36, 97%, 47%);
+      color: #ffffff;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: hsl(0, 0%, 2%);
+      border-color: hsl(0, 0%, 0%);
+    }
+
+    .hero {
+      padding: 48px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: lab(49.79% 79.76 -18.57);
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.02;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #505050;
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      border-radius: 28px;
+      overflow: hidden;
+      height: 800px;
+      background: #eee8df;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 40px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-size: 46px;
+    }
+
+    .section-head p {
+      max-width: 470px;
+      color: #5a5a5a;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .product-image {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      background: #eee8df;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .main-img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hover-img {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .product-image:hover .hover-img {
+      opacity: 1;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .card-body h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 18px;
+      color: hsl(19, 97%, 49%);
+      margin-bottom: 14px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 28px;
+      overflow: hidden;
+      height: 480px;
+      background: #eee8df;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: 46px;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      color: #555;
+      margin-bottom: 22px;
+      max-width: 520px;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 28px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .contact-box h2 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: #494848;
+      margin-bottom: 18px;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 12px;
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .hero-image,
+      .about-image {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="logo.png" alt="Tufting Studio logo" class="site-logo">
+        <div class="logo-text">
+          <div>Cuffi Creates</div>
+          <div>Tufting Studio</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="https://www.etsy.com/de-en/shop/unduebrigens" target="_blank">Shop on Etsy →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Custom tufted pieces</div>
+          <h1>Modern handmade rugs and decor.</h1>
+          <p>
+            Tufting Studio creates custom rugs and cozy decorative pieces with an artistic,
+            premium feel. Shop directly through Etsy.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="https://www.etsy.com/de-en/shop/unduebrigens" target="_blank">Shop Now</a>
+            <a class="btn btn-outline" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="rug1.jpg" alt="Featured tufted product">
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Selected pieces</div>
+            <h2>Bestsellers</h2>
+          </div>
+          
+        </div>
+
+        <div class="products">
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/4457305116" target="_blank" class="product-image">
+              <img src="rug1.jpg" class="main-img" alt="Rug 1">
+              <img src="rug1-2.jpg" class="hover-img" alt="Rug 1 second">
+            </a>
+            <div class="card-body">
+              <h3>Bialeti-Moka</h3>
+              <div class="price">€150</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/4457305116" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/4453695330" target="_blank" class="product-image">
+              <img src="rug2.jpg" class="main-img" alt="Rug 2">
+              <img src="rug2-2.jpg" class="hover-img" alt="Rug 2 second">
+            </a>
+            <div class="card-body">
+              <h3>Dog with Coffee</h3>
+              <div class="price">€160</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/4453695330" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/4424360757" target="_blank" class="product-image">
+              <img src="rug3.jpg" class="slide active" alt="Rug 3">
+              <img src="rug3-2.jpg" class="slide" alt="Rug 3 second">
+              <img src="rug3-3.jpg" class="slide" alt="Rug 3 third">
+            </a>
+            <div class="card-body">
+              <h3>Amore</h3>
+              <div class="price">€32</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/4424360757" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/1860826569" target="_blank" class="product-image">
+              <img src="rug4.jpg" class="main-img" alt="Rug 4">
+              <img src="rug4-2.jpg" class="hover-img" alt="Rug 4 second">
+            </a>
+            <div class="card-body">
+              <h3>Amore</h3>
+              <div class="price">€32</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/1860826569" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/1783904353" target="_blank" class="product-image">
+              <img src="rug5.jpg" alt="Rug 5">
+            </a>
+            <div class="card-body">
+              <h3>Dackel</h3>
+              <div class="price">€35</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/1783904353" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/1756855878" target="_blank" class="product-image">
+              <img src="rug6.jpg" class="main-img" alt="Rug 6">
+              <img src="rug6-2.jpg" class="hover-img" alt="Rug 6 second">
+            </a>
+            <div class="card-body">
+              <h3>Spiegelei</h3>
+              <div class="price">€14.50</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/1756855878" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/1774828805" target="_blank" class="product-image">
+              <img src="rug7.jpg" alt="Rug 7">
+            </a>
+            <div class="card-body">
+              <h3>Rug Dackel</h3>
+              <div class="price">€59</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/1774828805" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://www.etsy.com/de-en/listing/1758529778" target="_blank" class="product-image">
+              <img src="rug8.jpg" class="main-img" alt="Rug 8">
+              <img src="rug8-2.jpg" class="hover-img" alt="Rug 8 second">
+            </a>
+            <div class="card-body">
+              <h3>Rug Dackel</h3>
+              <div class="price">€59</div>
+              <a class="btn" href="https://www.etsy.com/de-en/listing/1758529778" target="_blank">View on Etsy</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-text">
+          <div class="eyebrow">About the brand</div>
+          <h2>
+            Made with style, texture and personality.</h2>
+          <p>
+            Each rug is handcrafted with care to bring color, texture and personality into your space. Designed to be unique, bold and made just for you.
+          </p>
+          <a class="btn btn-outline" href="https://www.etsy.com/de-en/shop/unduebrigens" target="_blank">Shop on Etsy -> 
+
+          </a>
+        </div>
+
+        <div class="about-image">
+          <img src="rug6.jpg" alt="About Tufting Studio">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="eyebrow">Get in touch</div>
+            <h2>Contact</h2>
+            <p>For custom orders, questions or collaborations, contact me directly.</p>
+            <a class="btn" href="mailto:hello@tuftingstudio.com">Send Email</a>
+          </div>
+
+          <div class="contact-info">
+            <p>
+  <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+  Email: hello@tuftingstudio.com
+</p>
+
+<p>
+  <span class="icon"><i class="fa-brands fa-instagram"></i></span>
+  Instagram: @tuftingstudio
+</p>
+
+<p>
+  <span class="icon"><i class="fa-solid fa-cart-shopping"></i></span>
+  Etsy: Unduebrigens
+
+</p>
+
+<p>
+  <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+  Location: Düsseldorf / Germany
+</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 Tufting Studio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const slides = card.querySelectorAll('.slide');
+      if (slides.length > 1) {
+        let index = 0;
+        setInterval(() => {
+          slides[index].classList.remove('active');
+          index = (index + 1) % slides.length;
+          slides[index].classList.add('active');
+        }, 1500);
+      }
+    });
+  </script>
+
+</body>
+</html>
