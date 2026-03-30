@@ -60,7 +60,11 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-
+    
+    .menu-toggle {
+      display: none;
+    }
+    
     .nav {
       display: flex;
       justify-content: space-between;
@@ -341,70 +345,59 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .menu {
-        gap: 14px;
-        flex-wrap: wrap;
-        justify-content: center;
+   @media (max-width: 768px) {
+     .nav {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 14px;
       }
 
-      .products {
-        grid-template-columns: 1fr;
-      }
-  .hero-title {
-    font-size: 34px;
-    line-height: 1.1;
-  }
+     .menu-toggle {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       align-self: flex-start;
+       width: 56px;
+       height: 56px;
+       border: none;
+       border-radius: 16px;
+       font-size: 30px;
+       cursor: pointer;
+     } 
 
-  .hero-copy p {
-    font-size: 18px;
-  }
-
-  .topbar {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    text-align: center;
-  }
-
-  .brand {
-    justify-content: center;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions .btn,
-  .etsy-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .hero-image img,
-  .about-image img,
-  .product-card img {
-    width: 100%;
-    height: auto;
-  }
-      .section-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-image,
-      .about-image {
-        height: auto;
-     }
-     .hero,
-     .about,
-     .contact
-     .products-section,
-     .section {
-       padding-left: 16px;
-       padding-righ: 16px;
-      }
+    .menu {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
     }
+
+    .menu.open {
+      display: flex;
+    }
+
+    .menu .btn {
+      display: none; 
+    }  
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .site-logo {
+      width: 90px;
+   }
+
+   .logo-text div {
+     font-size: 24px;
+   }
+}
   </style>
 </head>
 <body>
@@ -414,20 +407,29 @@
       <div class="logo">
         <img src="logo.png" alt="Tufting Studio logo" class="site-logo">
         <div class="logo-text">
-          
           <div>Tufting Studio</div>
         </div>
       </div>
 
+      <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+
       <nav class="menu">
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="btn" href="https://www.etsy.com/de-en/shop/unduebrigens" target="_blank">Shop on Etsy →</a>
-      </nav>
-    </div>
-  </header>
+       <a href="#home">Home</a>
+       <a href="#shop">Shop</a>
+       <a href="#about">About</a>
+       <a href="#contact">Contact</a>
+       <a class="btn" href="https://www.etsy.com/de-en/shop/unduebrigens" target="_blank">Shop on Etsy →</a>
+     </nav>
+   </div>
+ </header>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+ </script>
 
   <main>
     <section class="hero" id="home">
